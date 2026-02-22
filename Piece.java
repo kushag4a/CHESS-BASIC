@@ -10,4 +10,8 @@ public abstract class Piece {
     }
     
     public abstract String getSymbol();
-}
+
+
+    public abstract boolean isValidMove(Board board, int startX, int startY, int endX, int endY);
+        // This forces every piece to calculate if its move is legal.
+    }
