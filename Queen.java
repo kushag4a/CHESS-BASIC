@@ -1,7 +1,10 @@
 public class Queen extends Piece {
-
+    private Rook cloneRook;
+    private Bishop cloneBishop;
     public Queen(boolean isWhite) {
         super(isWhite);
+        this.cloneRook=new Rook(isWhite);
+        this.cloneBishop=new Bishop(isWhite);
     }
 
     @Override
@@ -14,21 +17,17 @@ public class Queen extends Piece {
     }
     @Override
     public boolean isValidMove(Board board, int startX, int startY, int endX, int endY) {
-        int diffx=(startX-endX)*(startX-endX);
-        int diffy=(startY-endY)*(startY-endY);
-        Piece getPiece=board.getPiece(endX, endY);
-        if(getPiece!=null&&getPiece.isWhite()==this.isWhite())
-        {
-            return false;
-        }
-
-        if((diffx==diffy)||(startX==endX||startY==endY))
+        if (cloneRook.isValidMove(board, startX, startY, endX, endY) || cloneBishop.isValidMove(board, startX, startY, endX, endY))
+       
+       // if the move is valid for either a rook or a bishop, then it's valid for the queen
+       //oop concept
+       //used if we change the code of rook or bishop, the code of queen will automatically change without any modification
+       
+       
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+    
+        else{return false;}
 }
 }

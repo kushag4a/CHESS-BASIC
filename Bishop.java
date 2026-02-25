@@ -22,8 +22,56 @@ public class Bishop extends Piece {
             return false;
         }
 
-        if(diffx==diffy)
+        if(startX<endX&&startY<endY&&diffx==diffy)
         {
+            int j=startY+1;
+            for (int i=startX+1;i<endX;i++)
+            {
+                if (board.getPiece(i,j)!=null)
+                {
+                    return false;
+                }
+                j++;
+            }
+            return true;
+        }
+        if(startX>endX&&startY<endY&&diffx==diffy)
+        {
+            int j=startY+1;
+            for (int i=startX-1;i>endX;i--)
+            {
+                if (board.getPiece(i,j)!=null)
+                {
+                    return false;
+                }
+                j++;
+            }
+            return true;
+        }
+        if(startX>endX&&startY>endY&&diffx==diffy)
+        {
+            int j=startY-1;
+            for (int i=startX-1;i>endX;i--)
+            {
+                if (board.getPiece(i,j)!=null)
+                {
+                    return false;
+                }
+                j--;
+            }
+            return true;
+        }
+        if(startX<endX&&startY>endY&&diffx==diffy)
+        {
+            int j=startY-1;
+            for (int i=startX+1;i<endX;i++)
+            {
+                if (board.getPiece(i,j)!=null)
+                {
+                    return false;
+                }
+                j--;
+            }
             return true;
         }
         else

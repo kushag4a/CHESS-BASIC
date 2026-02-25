@@ -20,9 +20,58 @@ public class Rook extends Piece {
         {
             return false;
         }
-        if(startX==endX||startY==endY)
+        if(startX==endX)
         {
-            return true;
+            if (startY<endY)
+            {
+                for(int i=startY+1;i<endY;i++)
+                {
+                    if (board.getPiece(startX, i)!=null)
+                    {
+                        return false;
+                    }
+                    
+                }
+                return true;
+            }
+            else
+            {
+                for(int i=endY+1;i<startY;i++)
+                {
+                    if (board.getPiece(startX, i)!=null)
+                    {
+                        return false;
+                    }
+                    
+                }
+                return true;
+            }
+            
+        }
+        else if(startY==endY)
+        {
+            if (startX<endX)
+            {
+                for(int i=startX+1;i<endX;i++)
+                {
+                    if (board.getPiece(i, startY)!=null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                for(int i=endX+1;i<startX;i++)
+                {
+                    if (board.getPiece(i, startY)!=null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
         else
         {
